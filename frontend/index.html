@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外包人员管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#4A90E2"/>
+                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="16" font-weight="bold">EPS</text>
+                </svg>
+                <span>外包人员管理</span>
+            </div>
+            <div class="header-info">
+                <span class="date" id="currentDate"></span>
+                <div class="user-info">
+                    <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="用户头像" class="avatar">
+                    <span>管理员</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="输入关键字搜索" class="search-input">
+                <button onclick="searchContractors()" class="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            <select id="departmentFilter" class="filter-select" onchange="searchContractors()">
+                <option value="">所有部门</option>
+            </select>
+            <select id="statusFilter" class="filter-select" onchange="searchContractors()">
+                <option value="">所有状态</option>
+                <option value="在职">在职</option>
+                <option value="离职">离职</option>
+                <option value="待入职">待入职</option>
+            </select>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="main-content">
+            <!-- 左侧人员列表 -->
+            <div class="contractor-list" id="contractorList">
+                <div class="loading">加载中...</div>
+            </div>
+
+            <!-- 右侧详情页 -->
+            <div class="contractor-detail" id="contractorDetail">
+                <div class="empty-state">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="50" r="40" stroke="#E0E0E0" stroke-width="2"/>
+                        <path d="M50 30v40M30 50h40" stroke="#E0E0E0" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <p>请选择一个人员查看详情</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
